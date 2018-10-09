@@ -1,6 +1,7 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { Write, MemoList, Search, SearchPanel } from 'components';
+import { Write, MemoList, SearchPanel } from 'components';
 import {
     memoPostRequest,
     memoListRequest,
@@ -22,6 +23,7 @@ class Home extends React.Component {
         this.loadNewMemo = this.loadNewMemo.bind(this);
         this.loadOldMemo = this.loadOldMemo.bind(this);
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleRefresh = this.handleRefresh.bind(this);
         this.state = {
             loadingState: false,
             initiallyLoaded: false
@@ -291,6 +293,15 @@ class Home extends React.Component {
         this.props.searchRequest(keyword);
     }
 
+    handleSearch(keyword) {
+        this.props.searchRequest(keyword);
+    }
+    
+    handleRefresh(){
+        console.log('asd');
+        browserHistory.push('/');
+    }
+
     render() {
         const write = (<Write onPost={this.handlePost}/>);
 
@@ -304,6 +315,7 @@ class Home extends React.Component {
 
         const wallHeader = (
             <div>
+                <a onClick={this.handleRefresh}>
                 <div className="container wall-info">
                     <div className="card wall-info blue lighten-2 white-text">
                         <div className="card-content">
@@ -311,6 +323,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
+                </a>
                 { this.state.initallyLoaded  && this.props.memoData.length === 0 ? emptyView : undefined }
             </div>
         );
@@ -319,22 +332,7 @@ class Home extends React.Component {
             <div className="wrapper">
                 { typeof this.props.username !== 'undefined' ? wallHeader : undefined }
                 {this.props.isLoggedIn ? <Write onPost={this.handlePost}/> : undefined}
-                {/* <SearchPanel onClose={this.toggleSearch}
-                    onSearch={this.props.onSearch}
-                    usernames={this.props.usernames}/> */}
                 <SearchPanel onSearch={this.handleSearch}/>
-                {/* <div className="row">
-                    <div className="col s12">
-                    <div className="row">
-                        <div className="input-field col s12">
-                            <i className="material-icons prefix">search</i>
-                            <input type="text" id="autocomplete-input" className="autocomplete"></input>
-                            <label for="autocomplete-input">Search a stuff</label>
-                        </div>
-                    </div>
-                    </div>
-                </div> */}
-
                 <MemoList data={this.props.memoData} currentUser={this.props.currentUser}
                     onEdit={this.handleEdit}
                     onRemove={this.handleRemove}

@@ -54,7 +54,6 @@ class SearchPanel extends React.Component {
                     else{
                         browserHistory.push('/');
                     }
-
                 }
     }
 

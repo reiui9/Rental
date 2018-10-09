@@ -3,6 +3,7 @@ import {
     MEMO_POST_SUCCESS,
     MEMO_POST_FAILURE,
     MEMO_LIST,
+    MEMO_DETAIL,
     MEMO_LIST_SUCCESS,
     MEMO_LIST_FAILURE,
     MEMO_EDIT,
@@ -84,9 +85,30 @@ export function memoListRequest(isInitial, listType, id, username) {
 
     };
 }
+export function memoDetailRequest(isInitial, listType, id, dataid) {
+    return (dispatch) => {
+        // to be implemented
+        dispatch(memoDetail());
+
+        let url = `/api/memoDetail/${dataid}` ;
+
+        return axios.get(url)
+        .then((response) => {
+            dispatch(memoListSuccess(response.data, isInitial, listType));
+        }).catch((error) => {
+            dispatch(memoListFailure());
+        });
+
+    };
+}
 export function memoList() {
     return {
         type: MEMO_LIST
+    };
+}
+export function memoDetail() {
+    return {
+        type: MEMO_DETAIL
     };
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import TimeAgo from 'react-timeago';
 import { browserHistory, Link } from 'react-router';
 
-class Memo extends React.Component {
+class MemoDetail extends React.Component {
 
     constructor(props) {
         super(props);
@@ -113,12 +113,6 @@ class Memo extends React.Component {
             </div>
         );
 
-        const enterDetail = (
-            <div className="option-button">
-                <Link to={`/detail/${data._id}`}><i className="material-icons">details</i></Link>
-            </div>
-        );
-
         // EDITED info
         const editedInfo = (
             <span style={{color: '#AAB5BC'}}> · Edited <TimeAgo date={this.props.data.date.edited} live={true}/></span>
@@ -127,27 +121,25 @@ class Memo extends React.Component {
         const starStyle = (this.props.data.starred.indexOf(this.props.currentUser) > -1) ? { color: '#ff9980' } : { };
 
         const memoView = (
-            <a onClick={this.enterDetail}>
-                <div className="card">
+            <div className="card">
+                    <div className="info">
                     <div className="info a-fixed-left-grid">
-                        <img class="responsive-img" src="https://images-na.ssl-images-amazon.com/images/I/711-RtRYAXL._AC_SY200_.jpg"></img>
-                        <div className="info right">
-                            <Link to={`/wall/${this.props.data.writer}`} className="username">{data.writer}</Link> wrote a log · <TimeAgo date={data.date.created}/>
-                            { this.props.data.is_edited ? editedInfo : undefined }
-                            { ownership ? dropDownMenu : undefined }
+                        <img class="responsive-img" src="https://images-na.ssl-images-amazon.com/images/I/41OKcBV4QeL._SY300_.jpg"></img>
+                    <div className="info right">
+                        <Link to={`/wall/${this.props.data.writer}`} className="username">{data.writer}</Link> wrote a log · <TimeAgo date={data.date.created}/>
+                        { this.props.data.is_edited ? editedInfo : undefined }
+                        { ownership ? dropDownMenu : undefined }
                         </div>
-                        {/* <div className="card-content right">
-                            {data.contents}
-                        </div> */}
-                    
-                    
                     </div>
-                    {/* <div className="footer">
+                    </div>
+                    <div className="card-content">
+                        {data.contents}
+                    </div>
+                    <div className="footer">
                         <i className="material-icons log-footer-icon star icon-button" style={starStyle} onClick={this.handleStar}>star</i>
                         <span className="star-count">{data.starred.length}</span>
-                    </div> */}
+                    </div>
                 </div>
-            </a>
         );
 
         const editView = (
@@ -175,7 +167,7 @@ class Memo extends React.Component {
     }
 }
 
-Memo.propTypes = {
+MemoDetail.propTypes = {
     data: React.PropTypes.object,
     ownership: React.PropTypes.bool,
     onEdit: React.PropTypes.func,
@@ -184,7 +176,7 @@ Memo.propTypes = {
     currentUser: React.PropTypes.string
 };
 
-Memo.defaultProps = {
+MemoDetail.defaultProps = {
     data: {
         _id: 'id12367890',
         writer: 'Writer',
@@ -206,4 +198,4 @@ Memo.defaultProps = {
     currentUser: ''
 };
 
-export default Memo;
+export default MemoDetail;

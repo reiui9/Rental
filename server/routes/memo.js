@@ -314,6 +314,19 @@ router.get('/:username', (req, res) => {
     });
 });
 
+/*
+    READ MEMO DETAIL OF A USER: GET /api/memo/id/:dataid
+*/
+router.get('/id/:dataid', (req, res) => {
+    Memo.find({_id: req.params.dataid})
+    .sort({"_id": -1})
+    .limit(1)
+    .exec((err, memos) => {
+        if(err) throw err;
+        res.json(memos);
+    });
+});
+
 
 /*
     READ ADDITIONAL (OLD/NEW) MEMO OF A USER: GET /api/memo/:username/:listType/:id
