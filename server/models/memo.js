@@ -3,12 +3,12 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const Memo = new Schema({
-	item_id: mongoose.Schema.Types.ObjectId,
-	name: String,
-	price: Number,
-	category: String,
-	isAvailable: Boolean,
-	rate : Number,
+    item_id: mongoose.Schema.Types.ObjectId,
+    name: String,
+    price: Number,
+    category: String,
+    isAvailable: Boolean,
+    rate : Number,
     writer: String,
     borrower: String,
     contents: String,
