@@ -40,12 +40,8 @@ class Header extends React.Component {
         return (
             <div>
                 <nav>
-                    <div className="nav-wrapper blue darken-1">
-                        <Link to="/" className="brand-logo center">RENTAL</Link> 
-
-                        {/* <ul>
-                            <li><a onClick={this.toggleSearch}><i className="material-icons">search</i></a></li>
-                        </ul> */}
+                    <div className="nav-wrapper black darken-0">
+                        <Link to="/main" className="brand-logo center"><strong>R</strong>elay<strong>R</strong>ental</Link> 
 
                         <div className="right">
                             <ul>

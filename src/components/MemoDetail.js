@@ -1,6 +1,8 @@
 import React from 'react';
 import TimeAgo from 'react-timeago';
 import { browserHistory, Link } from 'react-router';
+import { Confirm } from 'components';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class MemoDetail extends React.Component {
 
@@ -8,13 +10,22 @@ class MemoDetail extends React.Component {
         super(props);
         this.state = {
             editMode: false,
-            value: props.data.contents
+            value: props.data.contents,
+            confirm: false
         };
         this.toggleEdit = this.toggleEdit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
         this.handleStar = this.handleStar.bind(this);
         this.enterDetail = this.enterDetail.bind(this);
+        this.toggleConfirm = this.toggleConfirm.bind(this);
+    }
+
+    toggleConfirm() {
+        console.log("toggleConfirm : " + this.state.confirm)
+        this.setState({
+            confirm: !this.state.confirm
+        });
     }
 
     componentDidMount() {
@@ -138,6 +149,7 @@ class MemoDetail extends React.Component {
                     <div className="footer">
                         <i className="material-icons log-footer-icon star icon-button" style={starStyle} onClick={this.handleStar}>star</i>
                         <span className="star-count">{data.starred.length}</span>
+                        <a onClick={this.toggleConfirm} className="rent waves-effect waves-light btn right">Rent</a>
                     </div>
                 </div>
         );
@@ -162,6 +174,12 @@ class MemoDetail extends React.Component {
         return(
             <div className="container memo">
                { this.state.editMode ? editView : memoView }
+               <ReactCSSTransitionGroup transitionName="search" 
+                    transitionEnterTimeout={300} 
+                    transitionLeaveTimeout={300}>
+                    { /* IMPLEMENT: SHOW SEARCH WHEN SEARCH STATUS IS TRUE */}
+                    {this.state.confirm ? <Confirm onClose={this.toggleConfirm} data={this.props.data}/> : undefined }
+                </ReactCSSTransitionGroup>
            </div>
         );
     }

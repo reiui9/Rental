@@ -96,7 +96,6 @@ class Search extends React.Component {
                     <ul className="search-results">
                         { mapDataToLinks(this.props.usernames) }
                     </ul>
-
                 </div>
             </div>
         );

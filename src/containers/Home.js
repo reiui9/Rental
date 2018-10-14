@@ -46,7 +46,7 @@ class Home extends React.Component {
                     () => {
                         // DO THIS RECURSIVELY UNLESS IT'S LAST PAGE
                         if(!this.props.isLast) {
-                            loadUntilScrollable();
+                            // loadUntilScrollable();
                         }
                     }
                 );
@@ -293,10 +293,6 @@ class Home extends React.Component {
         this.props.searchRequest(keyword);
     }
 
-    handleSearch(keyword) {
-        this.props.searchRequest(keyword);
-    }
-    
     handleRefresh(){
         console.log('asd');
         browserHistory.push('/');
@@ -317,7 +313,7 @@ class Home extends React.Component {
             <div>
                 <a onClick={this.handleRefresh}>
                 <div className="container wall-info">
-                    <div className="card wall-info blue lighten-2 white-text">
+                    <div className="card wall-info white lighten-4 black-text">
                         <div className="card-content">
                             {this.props.username}
                         </div>
@@ -333,7 +329,9 @@ class Home extends React.Component {
                 { typeof this.props.username !== 'undefined' ? wallHeader : undefined }
                 {this.props.isLoggedIn ? <Write onPost={this.handlePost}/> : undefined}
                 <SearchPanel onSearch={this.handleSearch}/>
-                <MemoList data={this.props.memoData} currentUser={this.props.currentUser}
+                <MemoList 
+                    data={this.props.memoData} 
+                    currentUser={this.props.currentUser}
                     onEdit={this.handleEdit}
                     onRemove={this.handleRemove}
                     onStar={this.handleStar}/>

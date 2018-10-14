@@ -4,6 +4,7 @@ import {
     memoDetailRequest
 } from 'actions/memo';
 import { MemoDetail } from 'components';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Detail extends React.Component {
     constructor(props) {
@@ -20,7 +21,8 @@ class Detail extends React.Component {
         this.props.memoDetailRequest(true, undefined, undefined, this.props.params.dataid).then(
             () => {
                 this.setState({
-                    initiallyLoaded: true
+                    initiallyLoaded: true,
+                    isLast: true
                 });
             }
         );
@@ -64,6 +66,13 @@ class Detail extends React.Component {
             <div className="wrapper">
                 { typeof this.props.dataid !== 'undefined' ? wallHeader : undefined }
                 <div>
+                    {/* <ReactCSSTransitionGroup
+                        transitionName="memo"
+                        transitionEnterTimeout={1000}
+                        transitionLeaveTimeout={1000}>
+                        {mapToComponents(this.props.memoData)} */}
+                        {/* {mapToComponents(this.props.data)} */}
+                    {/* </ReactCSSTransitionGroup> */}
                     {mapToComponents(this.props.memoData)}
                 </div>
             </div>

@@ -87,9 +87,9 @@ class SearchPanel extends React.Component {
         };
 
         return (
-            <div className="row">
+            <div >
                 <div className="container">
-                    <div className="row">
+                    <div >
                         <div className="input-field col s12">
                             <i className="material-icons prefix">search</i>
                             <input 
