@@ -5,5 +5,6 @@ import Register from './Register';
 import Wall from './Wall';
 import Detail from './Detail';
 import Main from './Main';
+import Sell from './Sell';
 
-export { App, Home, Login, Register, Wall, Detail, Main };
+export { App, Home, Login, Register, Wall, Detail, Main, Sell };

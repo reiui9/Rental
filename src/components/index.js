@@ -8,5 +8,20 @@ import SearchPanel from './SearchPanel';
 import MemoDetail from './MemoDetail';
 import Confirm from './Confirm';
 import MainCards from './MainCards';
+import SellMain from './SellMain';
+import SellInputs from './SellInputs';
 
-export { Header, Authentication, Write, Memo, MemoList, Search, SearchPanel, MemoDetail, Confirm, MainCards };
+export {
+  Header,
+  Authentication,
+  Write,
+  Memo,
+  MemoList,
+  Search,
+  SearchPanel,
+  MemoDetail,
+  Confirm,
+  MainCards,
+  SellMain,
+  SellInputs
+};
