@@ -10,7 +10,8 @@ import {
   Detail,
   Main,
   Sell,
-  WallCategory
+  WallCategory,
+  WallBorrower
 } from 'containers';
 
 import { Provider } from 'react-redux';
@@ -35,6 +36,7 @@ ReactDOM.render(
         <Route path="register" component={Register} />
         <Route path="wall/:username" component={Wall} />
         <Route path="wallCategory/:category" component={WallCategory} />
+        <Route path="wallBorrower/:borrower" component={WallBorrower} />
         <Route path="detail/:dataid" component={Detail} />
         <Route path="main" component={Main} />
         <Route path="sell" component={Sell} />

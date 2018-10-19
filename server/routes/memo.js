@@ -138,7 +138,7 @@ router.put('/:id', (req, res) => {
 			deliveryMethod = req.body.deliveryMethod;
 		}
 		if ('borrower' in req.body){
-			borrower = req.body.category;
+			borrower = req.body.borrower;
 		}
 
         contents = req.body.contents;

@@ -1,10 +1,13 @@
 import React from 'react';
+import { confirmPostRequest } from 'actions/confirm';
+import { connect } from 'react-redux';
 
 class Confirm extends React.Component {
 
     constructor(props) {
         super(props);
 
+        this.handleConfirm = this.handleConfirm.bind(this);
         this.handleClose = this.handleClose.bind(this);
 
         // LISTEN ESC KEY, CLOSE IF PRESSED
@@ -20,6 +23,27 @@ class Confirm extends React.Component {
     }
 
     handleClose() {
+        document.onkeydown = null;
+        this.props.onClose();
+    }
+
+    handleConfirm() {
+        
+        const  { _id } = this.props.data;
+        console.log(_id);
+        return this.props
+        .confirmPostRequest({
+            _id
+        })
+        .then(() => {
+          if (this.props.status === 'SUCCESS') {
+            document.onkeydown = null;
+            this.props.onClose();
+          } else {
+          }
+        });
+
+
         document.onkeydown = null;
         this.props.onClose();
     }
@@ -46,7 +70,7 @@ class Confirm extends React.Component {
                         </ul>
                         <div className="center">
                             <a className="waves-effect waves-light btn blue lighten-1"
-                                onClick={this.handleClose}>CONFIRM</a>
+                                onClick={this.handleConfirm}>CONFIRM</a>
                             <a className="waves-effect waves-light btn red lighten-1"
                                 onClick={this.handleClose}>CLOSE</a>
                         </div>
@@ -68,4 +92,28 @@ Confirm.defaultProps = {
     }
 };
 
-export default Confirm;
+// export default Confirm;
+
+const mapStateToProps = state => {
+    return {
+    };
+  };
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+        confirmPostRequest: ({
+            _id
+      }) => {
+        return dispatch(
+            confirmPostRequest({
+                _id
+          })
+        );
+      }
+    };
+  };
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Confirm);

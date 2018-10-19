@@ -8,5 +8,7 @@ import Main from './Main';
 import Sell from './Sell';
 import HomeCategory from './HomeCategory'
 import WallCategory from './WallCategory'
+import HomeBorrower from './HomeBorrower'
+import WallBorrower from './WallBorrower'
 
-export { App, Home, Login, Register, Wall, Detail, Main, Sell, HomeCategory, WallCategory };
+export { App, Home, Login, Register, Wall, Detail, Main, Sell, HomeCategory, WallCategory, HomeBorrower, WallBorrower };
