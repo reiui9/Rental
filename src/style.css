@@ -449,3 +449,7 @@ ul.search-detail {
   font-size: 2rem;
   margin-right: 2rem;
 }
+
+.sell-inputs-form-container {
+  display: flex;
+}
