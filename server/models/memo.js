@@ -20,7 +20,7 @@ const Memo = new Schema({
     },
     is_edited: { type: Boolean, default: false },
     tumbnail: String,
-    image: String,
+    image: [String],
     deliveryMethod: String
 });
 
