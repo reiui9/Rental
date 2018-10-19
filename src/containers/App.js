@@ -86,7 +86,6 @@ class App extends React.Component {
         ) : (
           <Header
             isLoggedIn={this.props.status.isLoggedIn}
-            username={this.props.status.currentUser}
             onLogout={this.handleLogout}
             onSearch={this.handleSearch}
             usernames={this.props.searchResults}
