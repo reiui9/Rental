@@ -46,7 +46,11 @@ class Sell extends Component {
         <div className="outer">
           <div className="inner">
             <SellMain />
-            <SellInputs onPost={this.handlePost} writer="kyk" />
+            <SellInputs
+              writer={this.props.params.username}
+              onPost={this.handlePost}
+              writer="kyk"
+            />
           </div>
         </div>
       </div>

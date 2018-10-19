@@ -35,7 +35,7 @@ ReactDOM.render(
         <Route path="wall/:username" component={Wall} />
         <Route path="detail/:dataid" component={Detail} />
         <Route path="main" component={Main} />
-        <Route path="sell" component={Sell} />
+        <Route path="sell/:username" component={Sell} />
       </Route>
     </Router>
   </Provider>,

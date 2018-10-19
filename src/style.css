@@ -432,8 +432,16 @@ ul.search-detail {
 
 .sell-inputs-wrapper {
   margin-top: 2rem;
+  padding-left: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background: #ffffff;
 }
 
 .sell-inputs-wrapper .category-label {
   font-size: 1rem;
+}
+
+.empty {
+  height: 5rem;
 }

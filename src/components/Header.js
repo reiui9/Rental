@@ -41,7 +41,7 @@ class Header extends React.Component {
 
     const sellButton = (
       <li>
-        <Link to="/sell">
+        <Link to={`/sell/${this.props.username}`}>
           <h5>SELL</h5>
         </Link>
       </li>
@@ -91,7 +91,8 @@ class Header extends React.Component {
 Header.propTypes = {
   isLoggedIn: React.PropTypes.bool,
   onLogout: React.PropTypes.func,
-  usernames: React.PropTypes.array
+  usernames: React.PropTypes.array,
+  username: React.PropTypes.string
 };
 
 Header.defaultProps = {
@@ -99,7 +100,8 @@ Header.defaultProps = {
   onLogout: () => {
     console.error('logout function not defined');
   },
-  usernames: []
+  usernames: [],
+  username: ''
 };
 
 export default Header;
