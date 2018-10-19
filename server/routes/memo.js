@@ -43,7 +43,8 @@ router.post('/', (req, res) => {
         contents : req.body.contents ,
         tumbnail : req.body.tumbnail ,
         image : req.body.image ,
-        deliveryMethod : req.body.deliveryMethod
+        deliveryMethod : req.body.deliveryMethod,
+        price : req.body.price
     });
 
     // SAVE IN DATABASE
@@ -117,8 +118,6 @@ router.put('/:id', (req, res) => {
         }
 
         // MODIFY AND SAVE IN DATABASE
-
-
         memo.date.edited = new Date();
         memo.is_edited = true;
 
@@ -138,7 +137,7 @@ router.put('/:id', (req, res) => {
 			deliveryMethod = req.body.deliveryMethod;
 		}
 		if ('borrower' in req.body){
-			borrower = req.body.category;
+			borrower = req.body.borrower;
 		}
 
         contents = req.body.contents;
