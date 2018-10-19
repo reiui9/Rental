@@ -1,7 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { Write, MemoList, SearchPanel } from 'components';
+import { MemoList, SearchPanel } from 'components';
 import {
   memoPostRequest,
   memoListRequest,
