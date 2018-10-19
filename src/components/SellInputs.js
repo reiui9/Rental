@@ -71,47 +71,32 @@ class SellInputs extends Component {
         <div className="sell-inputs-form-wrapper">
           <label for="category">category: </label>
           <div className="sell-inputs-form-container">
-            <div className="sell-inputs-form-radio">
-              <input
-                type="radio"
-                id="drone"
-                name="category"
-                checked={true}
-                onChange={this.handleChange}
-              />
-              <label for="drone">Drone</label>
-              <div className="check" />
-            </div>
-            <div className="sell-inputs-form-radio">
-              <input
-                type="radio"
-                id="segway"
-                name="category"
-                onChange={this.handleChange}
-              />
-              <label for="segway">Segway</label>
-              <div className="check" />
-            </div>
-            <div className="sell-inputs-form-radio">
-              <input
-                type="radio"
-                id="gopro"
-                name="category"
-                onChange={this.handleChange}
-              />
-              <label for="gopro">GoPro</label>
-              <div className="check" />
-            </div>
-            <div className="sell-inputs-form-radio">
-              <input
-                type="radio"
-                id="playstation"
-                name="category"
-                onChange={this.handleChange}
-              />
-              <label for="playstation">PlayStation</label>
-              <div className="check" />
-            </div>
+            <form action="#">
+              <p>
+                <label>
+                  <input name="group1" type="radio" checked />
+                  <span>Red</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input name="group1" type="radio" />
+                  <span>Yellow</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input class="with-gap" name="group1" type="radio"  />
+                  <span>Green</span>
+                </label>
+              </p>
+              <p>
+                <label>
+                  <input name="group1" type="radio" disabled="disabled" />
+                  <span>Brown</span>
+                </label>
+              </p>
+            </form>
           </div>
         </div>
         <div className="sell-inputs-form-wrapper">

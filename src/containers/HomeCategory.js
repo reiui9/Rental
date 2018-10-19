@@ -4,16 +4,15 @@ import { connect } from 'react-redux';
 import { Write, MemoList, SearchPanel } from 'components';
 import {
     memoPostRequest,
-    memoListRequest,
+    memoListRequestbyCategory,
     memoEditRequest,
     memoRemoveRequest,
-    memoStarRequest,
-    memoListRequestbyCategory
+    memoStarRequest
 } from 'actions/memo';
 import { searchRequest } from 'actions/search';
 
 
-class Home extends React.Component {
+class HomeCategory extends React.Component {
 
     constructor(props) {
         super(props);
@@ -55,7 +54,7 @@ class Home extends React.Component {
         };
 
 
-        this.props.memoListRequest(true, undefined, undefined, this.props.username).then(
+        this.props.memoListRequestbyCategory(true, undefined, undefined, this.props.category).then(
             () => {
                 setTimeout(loadUntilScrollable, 1000);
                 loadMemoLoop();
@@ -97,7 +96,7 @@ class Home extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(this.props.username !== prevProps.username) {
+        if(this.props.category !== prevProps.category) {
             this.componentWillUnmount();
             this.componentDidMount();
         }
@@ -113,12 +112,12 @@ class Home extends React.Component {
 
         // IF PAGE IS EMPTY, DO NOTTHING // THE INITIAL LOADING
         if(this.props.memoData.length === 0 )
-            return this.props.memoListRequest(true, undefined, undefined, this.props.username)
-            // return this.props.memoListRequest(false);
+            return this.props.memoListRequestbyCategory(true, undefined, undefined, this.props.category)
+            // return this.props.memoListRequestbyCategory(false);
 
 
 
-        return this.props.memoListRequest(false, 'new', this.props.memoData[0]._id, this.props.username);
+        return this.props.memoListRequestbyCategory(false, 'new', this.props.memoData[0]._id, this.props.category);
     }
 
     loadOldMemo() {
@@ -135,7 +134,7 @@ class Home extends React.Component {
         let lastId = this.props.memoData[this.props.memoData.length - 1]._id;
 
         // START REQUEST
-        return this.props.memoListRequest(false, 'old', lastId, this.props.username).then(() => {
+        return this.props.memoListRequestbyCategory(false, 'old', lastId, this.props.category).then(() => {
             // IF IT IS LAST PAGE, NOTIFY
             if(this.props.isLast) {
                 Materialize.toast('You are reading the last page', 2000);
@@ -305,7 +304,7 @@ class Home extends React.Component {
         const emptyView = (
             <div className="container">
                 <div className="empty-page">
-                    <b>{this.props.username}</b> isn't registered or hasn't written any memo
+                    <b>{this.props.category}</b> isn't registered or hasn't written any memo
                 </div>
             </div>
         );
@@ -316,7 +315,7 @@ class Home extends React.Component {
                 <div className="container wall-info">
                     <div className="card wall-info white lighten-4 black-text">
                         <div className="card-content">
-                            {this.props.username}
+                            {this.props.category}
                         </div>
                     </div>
                 </div>
@@ -327,7 +326,7 @@ class Home extends React.Component {
 
         return (
             <div className="wrapper">
-                { typeof this.props.username !== 'undefined' ? wallHeader : undefined }
+                { typeof this.props.category !== 'undefined' ? wallHeader : undefined }
                 {this.props.isLoggedIn ? <Write onPost={this.handlePost}/> : undefined}
                 <SearchPanel onSearch={this.handleSearch}/>
                 <MemoList 
@@ -341,12 +340,12 @@ class Home extends React.Component {
     }
 }
 
-Home.PropTypes = {
-    username: React.PropTypes.string
+HomeCategory.PropTypes = {
+    category: React.PropTypes.string
 };
 
-Home.defaultProps = {
-    username: undefined
+HomeCategory.defaultProps = {
+    category: undefined
 };
 
 const mapStateToProps = (state) => {
@@ -368,9 +367,6 @@ const mapDispatchToProps = (dispatch) => {
         memoPostRequest: (contents) => {
             return dispatch(memoPostRequest(contents));
         },
-        memoListRequest: (isInitial, listType, id, username) => {
-            return dispatch(memoListRequest(isInitial, listType, id, username));
-        },
         memoListRequestbyCategory: (isInitial, listType, id, category) => {
             return dispatch(memoListRequestbyCategory(isInitial, listType, id, category));
         },
@@ -390,4 +386,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeCategory);

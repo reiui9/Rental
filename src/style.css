@@ -118,6 +118,39 @@ a {
   color: #90a4ae;
 }
 
+.memo .infoList {
+  font-size: 15px;
+  padding: 20px 20px 20px 20px;
+  color: #90a4ae;
+}
+
+.memo .infoList .title {
+  color: #263238;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.memo .infoList .content {
+  font-size: 13px;
+  padding: 0px 0px 0px 0px;
+  color: #90a4ae;
+}
+.memo .infoList .repu {
+  font-size: 13px;
+  color: #2baae9;
+}
+.memo .infoList .price {
+  font-size: 15px;
+  color: #263238;
+}
+.memo .infoList .date {
+  font-size: 15px;
+  color: #90a4ae;
+}
+.memo .infoList .status {
+  font-size: 15px;
+  color: #263238;
+}
 .memo .info .username {
   color: #263238;
   font-weight: bold;

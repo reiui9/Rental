@@ -23,6 +23,13 @@ class Header extends React.Component {
   }
 
   render() {
+
+    const boxButton = (
+      <li>
+          <Link to="/home"><i className="material-icons">all_inbox</i></Link>
+      </li>
+    );
+
     const loginButton = (
       <li>
         <Link to="/login">
@@ -64,6 +71,9 @@ class Header extends React.Component {
 
             <div className="right">
               <ul>{this.props.isLoggedIn ? logoutButton : loginButton}</ul>
+            </div>
+            <div className="right">
+              <ul>{ this.props.isLoggedIn ? boxButton : undefined }</ul>
             </div>
           </div>
         </nav>

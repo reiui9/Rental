@@ -199,7 +199,7 @@ router.get('/:category', (req, res) => {
 	console.log(req.params.category)
     Memo.find({category:req.params.category})
     .sort({"_id": -1})
-    .limit(6)
+    .limit(6)  
     .exec((err, memos) => {
         if(err) throw err;
         res.json(memos);

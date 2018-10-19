@@ -85,6 +85,31 @@ export function memoListRequest(isInitial, listType, id, username) {
 
     };
 }
+export function memoListRequestbyCategory(isInitial, listType, id, category) {
+    return (dispatch) => {
+        // to be implemented
+        dispatch(memoList());
+
+        let url = '/api/memo';
+
+        if(typeof category === "undefined") {
+            // category not given, load public memo
+            url = isInitial ? url : `${url}/${listType}/${id}`;
+            // or url + '/' + listType + Z'/' +  id
+        } else {
+            // load memos of a user
+            url = isInitial ? `${url}/${category}` : `${url}/${category}/${listType}/${id}`;
+        }
+
+        return axios.get(url)
+        .then((response) => {
+            dispatch(memoListSuccess(response.data, isInitial, listType));
+        }).catch((error) => {
+            dispatch(memoListFailure());
+        });
+
+    };
+}
 export function memoDetailRequest(isInitial, listType, id, dataid) {
     return (dispatch) => {
         // to be implemented

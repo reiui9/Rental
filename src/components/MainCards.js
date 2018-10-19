@@ -5,7 +5,7 @@ class MainCards extends React.Component {
   render() {
     return (
       <div className="row">
-        <Link to={`/wall/Drone`}>
+        <Link to={`/wallCategory/Drone`}>
           <div className="col s3 container memo">
             <div className="card">
               <div className="info header center">
@@ -18,7 +18,7 @@ class MainCards extends React.Component {
           </div>
         </Link>
 
-        <Link to={`/wall/Segway`}>
+        <Link to={`/wallCategory/Segway`}>
           <div className="col s3 container memo">
             <div className="card">
               <div className="info header center">
@@ -31,7 +31,7 @@ class MainCards extends React.Component {
           </div>
         </Link>
 
-        <Link to={`/wall/GoPro`}>
+        <Link to={`/wallCategory/GoPro`}>
           <div className="col s3 container memo">
             <div className="card">
               <div className="info header center">
@@ -44,7 +44,7 @@ class MainCards extends React.Component {
           </div>
         </Link>
 
-        <Link to={`/wall/PlayStation`}>
+        <Link to={`/wallCategory/PlayStation`}>
           <div className="col s3 container memo">
             <div className="card">
               <div className="info header center">
