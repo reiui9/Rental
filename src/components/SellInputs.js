@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 class SellInputs extends Component {
   constructor(props) {
@@ -28,7 +29,6 @@ class SellInputs extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-    console.log(e.target.value);
   }
 
   handleClick(e) {
@@ -47,21 +47,18 @@ class SellInputs extends Component {
       image,
       deliveryMethod
     } = this.state;
-    const { writer } = this.props;
     this.props
       .onPost({
         name,
         price,
         category,
-        writer,
         contents,
         tumbnail,
         image,
         deliveryMethod
       })
       .then(() => {
-        const { history } = this.props;
-        history.push('/home');
+        browserHistory.push('/home');
       });
   }
 
@@ -230,17 +227,14 @@ class SellInputs extends Component {
 }
 
 SellInputs.propTypes = {
-  writer: React.PropTypes.string,
   onPost: React.PropTypes.func
 };
 
 SellInputs.defaultProps = {
-  writer: '',
   onPost: ({
     name,
     price,
     category,
-    writer,
     contents,
     tumbnail,
     image,

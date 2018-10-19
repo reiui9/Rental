@@ -25,10 +25,12 @@ class Header extends React.Component {
   render() {
     const boxButton = (
       <li>
-          <Link to="/home"><i className="material-icons">all_inbox</i></Link>
+        <Link to="/home">
+          <i className="material-icons">all_inbox</i>
+        </Link>
       </li>
     );
-    
+
     const loginButton = (
       <li>
         <Link to="/login">
@@ -47,7 +49,7 @@ class Header extends React.Component {
 
     const sellButton = (
       <li>
-        <Link to={`/sell/${this.props.username}`}>
+        <Link to="/sell">
           <h5>SELL</h5>
         </Link>
       </li>
@@ -72,7 +74,7 @@ class Header extends React.Component {
               <ul>{this.props.isLoggedIn ? logoutButton : loginButton}</ul>
             </div>
             <div className="right">
-              <ul>{ this.props.isLoggedIn ? boxButton : undefined }</ul>
+              <ul>{this.props.isLoggedIn ? boxButton : undefined}</ul>
             </div>
           </div>
         </nav>
@@ -100,8 +102,7 @@ class Header extends React.Component {
 Header.propTypes = {
   isLoggedIn: React.PropTypes.bool,
   onLogout: React.PropTypes.func,
-  usernames: React.PropTypes.array,
-  username: React.PropTypes.string
+  usernames: React.PropTypes.array
 };
 
 Header.defaultProps = {
@@ -109,8 +110,7 @@ Header.defaultProps = {
   onLogout: () => {
     console.error('logout function not defined');
   },
-  usernames: [],
-  username: ''
+  usernames: []
 };
 
 export default Header;

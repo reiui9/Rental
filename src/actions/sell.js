@@ -19,7 +19,6 @@ export function sellPostRequest({
         name,
         price,
         category,
-        writer,
         contents,
         tumbnail,
         image,
