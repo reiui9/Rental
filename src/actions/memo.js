@@ -65,7 +65,7 @@ export function memoListRequest(isInitial, listType, id, username) {
         // to be implemented
         dispatch(memoList());
 
-        let url = '/api/memo';
+        let url = '/api/memo/person/writer';
 
         if(typeof username === "undefined") {
             // username not given, load public memo
@@ -74,6 +74,56 @@ export function memoListRequest(isInitial, listType, id, username) {
         } else {
             // load memos of a user
             url = isInitial ? `${url}/${username}` : `${url}/${username}/${listType}/${id}`;
+        }
+
+        return axios.get(url)
+        .then((response) => {
+            dispatch(memoListSuccess(response.data, isInitial, listType));
+        }).catch((error) => {
+            dispatch(memoListFailure());
+        });
+
+    };
+}
+export function memoListRequestbyCategory(isInitial, listType, id, category) {
+    return (dispatch) => {
+        // to be implemented
+        dispatch(memoList());
+
+        let url = '/api/memo/item/category/';
+
+        if(typeof category === "undefined") {
+            // category not given, load public memo
+            url = isInitial ? url : `${url}/${listType}/${id}`;
+            // or url + '/' + listType + Z'/' +  id
+        } else {
+            // load memos of a user
+            url = isInitial ? `${url}/${category}` : `${url}/${category}/${listType}/${id}`;
+        }
+
+        return axios.get(url)
+        .then((response) => {
+            dispatch(memoListSuccess(response.data, isInitial, listType));
+        }).catch((error) => {
+            dispatch(memoListFailure());
+        });
+
+    };
+}
+export function memoListRequestbyBorrower(isInitial, listType, id, borrower) {
+    return (dispatch) => {
+        // to be implemented
+        dispatch(memoList());
+
+        let url = '/api/memo/item/borrower/';
+
+        if(typeof borrower === "undefined") {
+            // category not given, load public memo
+            url = isInitial ? url : `${url}/${listType}/${id}`;
+            // or url + '/' + listType + Z'/' +  id
+        } else {
+            // load memos of a user
+            url = isInitial ? `${url}/${borrower}` : `${url}/${borrower}/${listType}/${id}`;
         }
 
         return axios.get(url)

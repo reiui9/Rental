@@ -6,10 +6,9 @@ const router = express.Router();
 /*
     READ MEMO DETAIL OF A USER: GET /api/memoDetail/:dataid
 */
-router.get('/:dataid', (req, res) => {
-    Memo.find({_id: req.params.dataid})
+router.get('/:name', (req, res) => {
+    Memo.find({writer : req.params.name})
     .sort({"_id": -1})
-    .limit(1)
     .exec((err, memos) => {
         if(err) throw err;
         res.json(memos);
@@ -17,3 +16,4 @@ router.get('/:dataid', (req, res) => {
 });
 
 export default router;
+

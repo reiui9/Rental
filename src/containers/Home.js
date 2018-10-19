@@ -3,11 +3,20 @@ import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { MemoList, SearchPanel } from 'components';
 import {
+<<<<<<< HEAD
   memoPostRequest,
   memoListRequest,
   memoEditRequest,
   memoRemoveRequest,
   memoStarRequest
+=======
+    memoPostRequest,
+    memoListRequest,
+    memoEditRequest,
+    memoRemoveRequest,
+    memoStarRequest,
+    memoListRequestbyCategory
+>>>>>>> origin/list_ui
 } from 'actions/memo';
 import { searchRequest } from 'actions/search';
 
@@ -377,6 +386,7 @@ const mapStateToProps = state => {
   };
 };
 
+<<<<<<< HEAD
 const mapDispatchToProps = dispatch => {
   return {
     memoPostRequest: contents => {
@@ -398,6 +408,32 @@ const mapDispatchToProps = dispatch => {
       return dispatch(searchRequest(keyword));
     }
   };
+=======
+const mapDispatchToProps = (dispatch) => {
+    return {
+        memoPostRequest: (contents) => {
+            return dispatch(memoPostRequest(contents));
+        },
+        memoListRequest: (isInitial, listType, id, username) => {
+            return dispatch(memoListRequest(isInitial, listType, id, username));
+        },
+        memoListRequestbyCategory: (isInitial, listType, id, category) => {
+            return dispatch(memoListRequestbyCategory(isInitial, listType, id, category));
+        },
+        memoEditRequest: (id, index, contents) => {
+            return dispatch(memoEditRequest(id, index, contents));
+        },
+        memoRemoveRequest: (id, index) => {
+            return dispatch(memoRemoveRequest(id, index));
+        },
+        memoStarRequest: (id, index) => {
+            return dispatch(memoStarRequest(id, index));
+        },
+        searchRequest: (keyword) => {
+            return dispatch(searchRequest(keyword));
+        }
+    };
+>>>>>>> origin/list_ui
 };
 
 export default connect(
