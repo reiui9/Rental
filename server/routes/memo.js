@@ -38,7 +38,12 @@ router.post('/', (req, res) => {
     // CREATE NEW MEMO
     let memo = new Memo({
         writer: req.session.loginInfo.username,
-        contents: req.body.contents
+        name : req.body.name ,
+        category : req.body.category ,
+        contents : req.body.contents ,
+        tumbnail : req.body.tumbnail ,
+        image : req.body.image ,
+        deliveryMethod : req.body.deliveryMethod
     });
 
     // SAVE IN DATABASE
@@ -112,9 +117,29 @@ router.put('/:id', (req, res) => {
         }
 
         // MODIFY AND SAVE IN DATABASE
-        memo.contents = req.body.contents;
+
+
         memo.date.edited = new Date();
         memo.is_edited = true;
+
+		if ('name' in req.body){
+			name = req.body.name;
+		}
+		if ('category' in req.body){
+			category = req.body.category;
+		}
+		if ('tumbnail' in req.body){
+			tumbnail = req.body.tumbnail;
+		}
+		if ('image' in req.body){
+			image = req.body.image;
+		}
+		if ('deliveryMethod' in req.body){
+			deliveryMethod = req.body.deliveryMethod;
+		}
+		if ('borrower' in req.body){
+			borrower = req.body.borrower;
+		}
 
         memo.save((err, memo) => {
             if(err) throw err;
@@ -402,3 +427,4 @@ router.get('/:username/:listType/:id', (req, res) => {
 });
 
 export default router;
+
