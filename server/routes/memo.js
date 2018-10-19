@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
             code: 1
         });
     }
-
+/*
     // CHECK CONTENTS VALID
     if(typeof req.body.contents !== 'string') {
         return res.status(400).json({
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
             code: 2
         });
     }
-
+*/
     // CREATE NEW MEMO
     let memo = new Memo({
         writer: req.session.loginInfo.username,
@@ -73,7 +73,7 @@ router.put('/:id', (req, res) => {
             code: 1
         });
     }
-
+/*
     // CHECK CONTENTS VALID
     if(typeof req.body.contents !== 'string') {
         return res.status(400).json({
@@ -88,7 +88,7 @@ router.put('/:id', (req, res) => {
             code: 2
         });
     }
-
+*/
     // CHECK LOGIN STATUS
     if(typeof req.session.loginInfo === 'undefined') {
         return res.status(403).json({
