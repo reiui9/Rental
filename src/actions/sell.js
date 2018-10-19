@@ -2,38 +2,28 @@ import { SELL_POST, SELL_POST_SUCCESS, SELL_POST_FAILURE } from './ActionTypes';
 import axios from 'axios';
 
 export function sellPostRequest({
-  category,
-  product,
-  condition,
+  name,
   price,
-  purchaseDate,
-  pictureMain,
-  pictureTop,
-  pictureBottom,
-  pictureFront,
-  pictureBack,
-  pictureRight,
-  pictureLeft,
-  writer
+  category,
+  writer,
+  contents,
+  tumbnail,
+  image,
+  deliveryMethod
 }) {
   return dispatch => {
     dispatch(sellPost());
 
     return axios
-      .post('/api/sell/', {
-        category,
-        product,
-        condition,
+      .post('/api/memo/', {
+        name,
         price,
-        purchaseDate,
-        pictureMain,
-        pictureTop,
-        pictureBottom,
-        pictureFront,
-        pictureBack,
-        pictureRight,
-        pictureLeft,
-        writer
+        category,
+        writer,
+        contents,
+        tumbnail,
+        image,
+        deliveryMethod
       })
       .then(response => {
         dispatch(sellPostSuccess());

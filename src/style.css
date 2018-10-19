@@ -430,26 +430,10 @@ ul.search-detail {
   font-weight: 700;
 }
 
-.sell-inputs-form {
-  margin-top: 1rem;
-  background: #fafafa;
-  border-radius: 4px;
+.sell-inputs-wrapper {
+  margin-top: 2rem;
 }
 
-.sell-inputs-form-wrapper {
-  display: flex;
-  padding: 1rem 10rem;
-}
-
-.sell-inputs-form-wrapper h5 {
-  margin-right: 2rem;
-}
-
-.sell-inputs-form-wrapper label {
-  font-size: 2rem;
-  margin-right: 2rem;
-}
-
-.sell-inputs-form-container {
-  display: flex;
+.sell-inputs-wrapper .category-label {
+  font-size: 1rem;
 }

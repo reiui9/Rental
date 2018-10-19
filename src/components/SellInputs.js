@@ -4,60 +4,60 @@ class SellInputs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: '',
-      product: '',
-      condition: '',
+      name: '',
       price: '',
-      purchaseDate: '',
-      pictureMain: '',
-      pictureTop: '',
-      pictureBottom: '',
-      pictureFront: '',
-      pictureBack: '',
-      pictureRight: '',
-      pictureLeft: ''
+      category: '',
+      contents: '',
+      tumbnail: '',
+      image: '',
+      deliveryMethod: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handlePost = this.handlePost.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleDeliverClick = this.handleDeliverClick.bind(this);
+  }
+
+  handleDeliverClick(e) {
+    this.setState({
+      deliveryMethod: e.target.id
+    });
   }
 
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
+    console.log(e.target.value);
+  }
+
+  handleClick(e) {
+    this.setState({
+      category: e.target.id
+    });
   }
 
   handlePost() {
     const {
-      category,
-      product,
-      condition,
+      name,
       price,
-      purchaseDate,
-      pictureMain,
-      pictureTop,
-      pictureBottom,
-      pictureFront,
-      pictureBack,
-      pictureRight,
-      pictureLeft
+      category,
+      contents,
+      tumbnail,
+      image,
+      deliveryMethod
     } = this.state;
     const { writer } = this.props;
     this.props
       .onPost({
-        writer,
-        category,
-        product,
-        condition,
+        name,
         price,
-        purchaseDate,
-        pictureMain,
-        pictureTop,
-        pictureBottom,
-        pictureFront,
-        pictureBack,
-        pictureRight,
-        pictureLeft
+        category,
+        writer,
+        contents,
+        tumbnail,
+        image,
+        deliveryMethod
       })
       .then(() => {
         const { history } = this.props;
@@ -66,104 +66,140 @@ class SellInputs extends Component {
   }
 
   render() {
+    const { category, deliveryMethod } = this.state;
     return (
-      <div className="sell-inputs-form">
-        <div className="sell-inputs-form-wrapper">
-          <label for="category">category: </label>
-          <div className="sell-inputs-form-container">
-            <div className="sell-inputs-form-radio">
+      <div className="sell-inputs-wrapper">
+        <label className="category-label" for="category">
+          Category
+        </label>
+        <p>
+          <input
+            className="with-gap"
+            type="radio"
+            checked={category === 'drone'}
+          />
+          <label
+            value="drone"
+            name="category"
+            id="drone"
+            onClick={this.handleClick}
+          >
+            Drone
+          </label>
+        </p>
+        <p>
+          <input
+            className="with-gap"
+            type="radio"
+            checked={category === 'segway'}
+          />
+          <label
+            value="segway"
+            name="category"
+            id="segway"
+            onClick={this.handleClick}
+          >
+            Segway
+          </label>
+        </p>
+        <p>
+          <input
+            className="with-gap"
+            type="radio"
+            checked={category === 'gopro'}
+          />
+          <label
+            value="gopro"
+            name="category"
+            id="gopro"
+            onClick={this.handleClick}
+          >
+            GoPro
+          </label>
+        </p>
+        <p>
+          <input
+            className="with-gap"
+            type="radio"
+            checked={category === 'playstation'}
+          />
+          <label
+            value="playstation"
+            name="category"
+            id="playstation"
+            onClick={this.handleClick}
+          >
+            PlayStation
+          </label>
+        </p>
+        <form className="col s12">
+          <div className="row">
+            <div className="input-field col s6">
               <input
-                type="radio"
-                id="drone"
-                name="category"
-                checked={true}
+                id="name"
+                type="text"
                 onChange={this.handleChange}
+                name="name"
               />
-              <label for="drone">Drone</label>
-              <div className="check" />
-            </div>
-            <div className="sell-inputs-form-radio">
-              <input
-                type="radio"
-                id="segway"
-                name="category"
-                onChange={this.handleChange}
-              />
-              <label for="segway">Segway</label>
-              <div className="check" />
-            </div>
-            <div className="sell-inputs-form-radio">
-              <input
-                type="radio"
-                id="gopro"
-                name="category"
-                onChange={this.handleChange}
-              />
-              <label for="gopro">GoPro</label>
-              <div className="check" />
-            </div>
-            <div className="sell-inputs-form-radio">
-              <input
-                type="radio"
-                id="playstation"
-                name="category"
-                onChange={this.handleChange}
-              />
-              <label for="playstation">PlayStation</label>
-              <div className="check" />
+              <label for="last_name">Product Name</label>
             </div>
           </div>
-        </div>
-        <div className="sell-inputs-form-wrapper">
-          <label for="product">Product: </label>
-          <input
-            type="text"
-            className="sell-inputs-product"
-            name="product"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="sell-inputs-form-wrapper">
-          <label for="condition">Condition: </label>
-          <input
-            type="text"
-            className="sell-inputs-condition"
-            name="condition"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="sell-inputs-form-wrapper">
-          <label for="price">Price: </label>
-          <input
-            type="text"
-            className="sell-inputs-price"
-            name="price"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="sell-inputs-form-wrapper">
-          <label for="purchaseDate">Purchase Date: </label>
-          <input
-            type="text"
-            className="sell-inputs-purchaseDate"
-            name="purchaseDate"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="sell-inputs-form-wrapper">
-          <label for="pictures">Pictures: </label>
-          <input
-            type="text"
-            className="sell-inputs-pictures"
-            name="pictures"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="sell-inputs-form-submit">
-          <a onClick={this.handlePost} className="waves-effect waves-light btn">
-            SUBMIT
-          </a>
-        </div>
+          <div className="row">
+            <div className="input-field col s6">
+              <input
+                id="price"
+                type="text"
+                onChange={this.handleChange}
+                name="price"
+              />
+              <label for="last_name">Price</label>
+            </div>
+          </div>
+          <div className="row">
+            <div className="input-field col s6">
+              <input
+                id="contents"
+                type="text"
+                onChange={this.handleChange}
+                name="contents"
+              />
+              <label for="last_name">Details</label>
+            </div>
+          </div>
+          <label className="deliveryMethod-label" for="deliveryMethod">
+            How to receive
+          </label>
+          <p>
+            <input
+              className="with-gap"
+              type="radio"
+              checked={deliveryMethod === 'delivery'}
+            />
+            <label
+              value="delivery"
+              name="deliveryMethod"
+              id="delivery"
+              onClick={this.handleDeliverClick}
+            >
+              Delivery
+            </label>
+          </p>
+          <p>
+            <input
+              className="with-gap"
+              type="radio"
+              checked={deliveryMethod === 'directlyReceived'}
+            />
+            <label
+              value="directlyReceived"
+              name="deliveryMethod"
+              id="directlyReceived"
+              onClick={this.handleDeliverClick}
+            >
+              Directly received
+            </label>
+          </p>
+        </form>
       </div>
     );
   }
@@ -177,18 +213,14 @@ SellInputs.propTypes = {
 SellInputs.defaultProps = {
   writer: '',
   onPost: ({
-    category,
-    product,
-    condition,
+    name,
     price,
-    purchaseDate,
-    pictureMain,
-    pictureTop,
-    pictureBottom,
-    pictureFront,
-    pictureBack,
-    pictureRight,
-    pictureLeft
+    category,
+    writer,
+    contents,
+    tumbnail,
+    image,
+    deliveryMethod
   }) => {
     console.error('onPost not defined');
   }
