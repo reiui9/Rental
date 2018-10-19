@@ -137,7 +137,7 @@ router.put('/:id', (req, res) => {
 			deliveryMethod = req.body.deliveryMethod;
 		}
 		if ('borrower' in req.body){
-			borrower = req.body.borrower;
+			borrower = req.session.loginInfo.username;
 		}
 
         contents = req.body.contents;
