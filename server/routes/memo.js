@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
             code: 1
         });
     }
-
+/*
     // CHECK CONTENTS VALID
     if(typeof req.body.contents !== 'string') {
         return res.status(400).json({
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
             code: 2
         });
     }
-
+*/
     // CREATE NEW MEMO
     let memo = new Memo({
         writer: req.session.loginInfo.username,
@@ -43,7 +43,8 @@ router.post('/', (req, res) => {
         contents : req.body.contents ,
         tumbnail : req.body.tumbnail ,
         image : req.body.image ,
-        deliveryMethod : req.body.deliveryMethod
+        deliveryMethod : req.body.deliveryMethod,
+        price : req.body.price
     });
 
     // SAVE IN DATABASE
@@ -72,7 +73,7 @@ router.put('/:id', (req, res) => {
             code: 1
         });
     }
-
+/*
     // CHECK CONTENTS VALID
     if(typeof req.body.contents !== 'string') {
         return res.status(400).json({
@@ -87,7 +88,7 @@ router.put('/:id', (req, res) => {
             code: 2
         });
     }
-
+*/
     // CHECK LOGIN STATUS
     if(typeof req.session.loginInfo === 'undefined') {
         return res.status(403).json({
@@ -117,8 +118,6 @@ router.put('/:id', (req, res) => {
         }
 
         // MODIFY AND SAVE IN DATABASE
-
-
         memo.date.edited = new Date();
         memo.is_edited = true;
 
@@ -138,7 +137,11 @@ router.put('/:id', (req, res) => {
 			deliveryMethod = req.body.deliveryMethod;
 		}
 		if ('borrower' in req.body){
+<<<<<<< HEAD
 			borrower = req.body.borrower;
+=======
+			borrower = req.session.loginInfo.username;
+>>>>>>> 4e719129538ec19623592dad68bd90a27e912ff3
 		}
 
         contents = req.body.contents;
