@@ -13,35 +13,23 @@ class Sell extends Component {
   }
 
   handlePost({
-    category,
-    product,
-    condition,
+    name,
     price,
-    purchaseDate,
-    pictureMain,
-    pictureTop,
-    pictureBottom,
-    pictureFront,
-    pictureBack,
-    pictureRight,
-    pictureLeft,
-    writer
+    category,
+    contents,
+    tumbnail,
+    image,
+    deliveryMethod
   }) {
     return this.props
       .sellPostRequest({
-        category,
-        product,
-        condition,
+        name,
         price,
-        purchaseDate,
-        pictureMain,
-        pictureTop,
-        pictureBottom,
-        pictureFront,
-        pictureBack,
-        pictureRight,
-        pictureLeft,
-        writer
+        category,
+        contents,
+        tumbnail,
+        image,
+        deliveryMethod
       })
       .then(() => {
         if (this.props.status === 'SUCCESS') {
@@ -56,7 +44,11 @@ class Sell extends Component {
         <div className="outer">
           <div className="inner">
             <SellMain />
-            <SellInputs onPost={this.handlePost} writer="kyk" />
+            <SellInputs
+              writer={this.props.params.username}
+              onPost={this.handlePost}
+              writer="kyk"
+            />
           </div>
         </div>
       </div>
@@ -73,35 +65,23 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     sellPostRequest: ({
-      category,
-      product,
-      condition,
+      name,
       price,
-      purchaseDate,
-      pictureMain,
-      pictureTop,
-      pictureBottom,
-      pictureFront,
-      pictureBack,
-      pictureRight,
-      pictureLeft,
-      writer
+      category,
+      contents,
+      tumbnail,
+      image,
+      deliveryMethod
     }) => {
       return dispatch(
         sellPostRequest({
-          category,
-          product,
-          condition,
+          name,
           price,
-          purchaseDate,
-          pictureMain,
-          pictureTop,
-          pictureBottom,
-          pictureFront,
-          pictureBack,
-          pictureRight,
-          pictureLeft,
-          writer
+          category,
+          contents,
+          tumbnail,
+          image,
+          deliveryMethod
         })
       );
     }

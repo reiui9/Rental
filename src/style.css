@@ -463,26 +463,24 @@ ul.search-detail {
   font-weight: 700;
 }
 
-.sell-inputs-form {
-  margin-top: 1rem;
-  background: #fafafa;
-  border-radius: 4px;
+.sell-inputs-wrapper {
+  margin-top: 2rem;
+  padding-left: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background: #ffffff;
 }
 
-.sell-inputs-form-wrapper {
-  display: flex;
-  padding: 1rem 10rem;
+.sell-inputs-wrapper .category-label {
+  font-size: 1rem;
 }
 
-.sell-inputs-form-wrapper h5 {
-  margin-right: 2rem;
-}
-
-.sell-inputs-form-wrapper label {
-  font-size: 2rem;
-  margin-right: 2rem;
-}
-
+<<<<<<< HEAD
 .sell-inputs-form-container {
   display: flex;
 }
+=======
+.empty {
+  height: 5rem;
+}
+>>>>>>> 0d7d6d25c8497f240b079bc4fe81c138ce349afe
