@@ -58,7 +58,7 @@ class SellInputs extends Component {
         deliveryMethod
       })
       .then(() => {
-        browserHistory.push('/home');
+        browserHistory.push('/main');
       });
   }
 
@@ -75,12 +75,13 @@ class SellInputs extends Component {
             <input
               className="with-gap"
               type="radio"
-              checked={category === 'drone'}
+              checked={category === 'Drone'}
+              value="Drone"
             />
             <label
-              value="drone"
+              value="Drone"
               name="category"
-              id="drone"
+              id="Drone"
               onClick={this.handleClick}
             >
               Drone
@@ -90,12 +91,13 @@ class SellInputs extends Component {
             <input
               className="with-gap"
               type="radio"
-              checked={category === 'segway'}
+              checked={category === 'Segway'}
+              value="Segway"
             />
             <label
-              value="segway"
+              value="Segway"
               name="category"
-              id="segway"
+              id="Segway"
               onClick={this.handleClick}
             >
               Segway
@@ -105,12 +107,13 @@ class SellInputs extends Component {
             <input
               className="with-gap"
               type="radio"
-              checked={category === 'gopro'}
+              checked={category === 'GoPro'}
+              value="GoPro"
             />
             <label
-              value="gopro"
+              value="GoPro"
               name="category"
-              id="gopro"
+              id="GoPro"
               onClick={this.handleClick}
             >
               GoPro
@@ -120,12 +123,13 @@ class SellInputs extends Component {
             <input
               className="with-gap"
               type="radio"
-              checked={category === 'playstation'}
+              checked={category === 'PlayStation'}
+              value="PlayStation"
             />
             <label
-              value="playstation"
+              value="PlayStation"
               name="category"
-              id="playstation"
+              id="PlayStation"
               onClick={this.handleClick}
             >
               PlayStation

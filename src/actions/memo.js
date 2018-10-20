@@ -115,7 +115,7 @@ export function memoListRequestbyBorrower(isInitial, listType, id, borrower) {
         // to be implemented
         dispatch(memoList());
 
-        let url = '/api/memo/item/borrower/';
+        let url = '/api/memo/person/borrower/';
 
         if(typeof borrower === "undefined") {
             // category not given, load public memo

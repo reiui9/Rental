@@ -26,7 +26,7 @@ class Header extends React.Component {
 
     const boxButton = (
       <li>
-          <Link to={`/wallBorrower/${this.props.username}`}><i className="material-icons">all_inbox</i></Link>
+          <Link to={`/wallBorrower/${this.props.usernames}`}><i className="material-icons">all_inbox</i></Link>
       </li>
     );
 

@@ -156,6 +156,11 @@ a {
   font-weight: bold;
   cursor: pointer;
 }
+.memo .border {
+  border: 1px solid #dddddd;
+  padding: 2px 2px 2px 2px;
+}
+
 
 .memo .card-content {
   word-wrap: break-word;

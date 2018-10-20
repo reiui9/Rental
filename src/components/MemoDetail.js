@@ -135,7 +135,7 @@ class MemoDetail extends React.Component {
             <div className="card">
                     <div className="info">
                     <div className="info a-fixed-left-grid">
-                        <img class="responsive-img" src="https://images-na.ssl-images-amazon.com/images/I/41OKcBV4QeL._SY300_.jpg"></img>
+                        <img class="responsive-img" src={data.tumbnail}></img>
                     <div className="info right">
                         <Link to={`/wall/${this.props.data.writer}`} className="username">{data.writer}</Link> wrote a log · <TimeAgo date={data.date.created}/>
                         { this.props.data.is_edited ? editedInfo : undefined }
@@ -151,6 +151,10 @@ class MemoDetail extends React.Component {
                         <span className="star-count">{data.starred.length}</span>
                         <a onClick={this.toggleConfirm} className="rent waves-effect waves-light btn right">Rent</a>
                     </div>
+                    <div className="col s2 info">상품이름 : {data.name}</div>
+                <div className="col s2 info">가격 : {data.price}</div>
+                <div className="col s2 info">날짜 : {data.date.edited}</div>
+                <div className="col s2 info">구입날짜 : {data.date.buy}</div>
                 </div>
         );
 
@@ -196,12 +200,21 @@ MemoDetail.propTypes = {
 
 MemoDetail.defaultProps = {
     data: {
-        _id: 'id12367890',
-        writer: 'Writer',
+        item_id: 'id12367890',
+        name: 'none',
+        price: 'none',
+        category: 'none',
+        isAvailable: 'false',
+        rate: '0',
+        writer: 'none',
+        borrower: 'none',
         contents: 'Contents',
-        is_edited: false,
+        starred: [],
         date: { edited: new Date(), created: new Date() },
-        starred: []
+        is_edited: false,
+        tumbnail: '',
+        image: '',
+        deliveryMethod:'none'
     },
     ownership: true,
     onEdit: (id, index, contents) => {

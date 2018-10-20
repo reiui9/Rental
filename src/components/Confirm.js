@@ -1,5 +1,6 @@
 import React from 'react';
 import { confirmPostRequest } from 'actions/confirm';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
 class Confirm extends React.Component {
@@ -37,9 +38,13 @@ class Confirm extends React.Component {
         })
         .then(() => {
           if (this.props.status === 'SUCCESS') {
+            browserHistory.push('/wallBorrower/' + this.props.data.username);
             document.onkeydown = null;
             this.props.onClose();
           } else {
+            browserHistory.push('/wallBorrower/' + this.props.data.borrower);
+            document.onkeydown = null;
+            this.props.onClose();
           }
         });
 

@@ -130,21 +130,23 @@ class Memo extends React.Component {
             <a onClick={this.enterDetail}>
                 <div className="card">
                     <div className="infoList a-fixed-left-grid row">
-                        <img className="col s2 responsive-img" src="https://images-na.ssl-images-amazon.com/images/I/711-RtRYAXL._AC_SY200_.jpg"></img>
+                        <img className="col s2 responsive-img" src={data.image}></img>
                         
                         <div className="col s8">
-                            <div className="row s1 title">New Segway !</div>
+                            <div className="row s1 title">{data.name}</div>
                             <div className="row s1 content">little brifing</div>
                             <div className="row s1 repu">Stars : 3/5</div>
-                            <div className="col s4">
-                                <div className="row s1 price">Price : 100$</div>
-                            </div>
-                            <div className="col s4 right">
-                                    <Link to={`/wall/${this.props.data.writer}`} className="username">{data.writer}</Link> wrote a log · <TimeAgo date={data.date.created}/>
-                                    { this.props.data.is_edited ? editedInfo : undefined }
-                                    { ownership ? dropDownMenu : undefined }
-                                    <div className="row s1 date">Date of purchase : 2018-10-15</div>
-                                    <div className="row s1 status">Status : available</div>
+                            <div className="row s3 border">
+                                <div className="col s4">
+                                    <div className="row s1 price">Price : {data.price} $</div>
+                                </div>
+                                <div className="col s4 right">
+                                        <Link to={`/wall/${this.props.data.writer}`} className="username">{data.writer}</Link> wrote a log · <TimeAgo date={data.date.created}/>
+                                        { this.props.data.is_edited ? editedInfo : undefined }
+                                        { ownership ? dropDownMenu : undefined }
+                                        <div className="row s1 date">Date of purchase : 2018-10-15</div>
+                                        <div className="row s1 status">Status : available</div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -36,6 +36,8 @@ router.post('/', (req, res) => {
     }
 */
     // CREATE NEW MEMO
+
+    console.log(req.session)
     let memo = new Memo({
         writer: req.session.loginInfo.username,
         name : req.body.name ,
@@ -108,7 +110,7 @@ router.put('/:id', (req, res) => {
                 code: 4
             });
         }
-
+/*
         // IF EXISTS, CHECK WRITER
         if(memo.writer != req.session.loginInfo.username) {
             return res.status(403).json({
@@ -116,37 +118,30 @@ router.put('/:id', (req, res) => {
                 code: 5
             });
         }
-
+*/
         // MODIFY AND SAVE IN DATABASE
         memo.date.edited = new Date();
         memo.is_edited = true;
 
 		if ('name' in req.body){
-			name = req.body.name;
+			memo.name = req.body.name;
 		}
 		if ('category' in req.body){
-			category = req.body.category;
+			memo.category = req.body.category;
 		}
 		if ('tumbnail' in req.body){
-			tumbnail = req.body.tumbnail;
+			memo.tumbnail = req.body.tumbnail;
 		}
 		if ('image' in req.body){
-			image = req.body.image;
+			memo.image = req.body.image;
 		}
 		if ('deliveryMethod' in req.body){
-			deliveryMethod = req.body.deliveryMethod;
+			memo.deliveryMethod = req.body.deliveryMethod;
 		}
-		if ('borrower' in req.body){
-			borrower = req.session.loginInfo.username;
-		}
+		memo.borrower = req.session.loginInfo.username;
+		
 
-        contents = req.body.contents;
-        tumbnail = req.body.tumbnail;
-        image = req.body.image;
-
-        deliveryMethod = req.body.deliveryMethod;
-		borrower = req.body.borrower;
-
+       // console.log(memo)
         memo.save((err, memo) => {
             if(err) throw err;
             return res.json({
