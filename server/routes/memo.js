@@ -12,7 +12,6 @@ const router = express.Router();
         2: EMPTY CONTENTS
 */
 router.post('/', (req, res) => {
-<<<<<<< HEAD
     // CHECK LOGIN STATUS
     if(typeof req.session.loginInfo === 'undefined') {
         return res.status(403).json({
@@ -46,21 +45,6 @@ router.post('/', (req, res) => {
         image : req.body.image ,
         deliveryMethod : req.body.deliveryMethod,
         price : req.body.price
-=======
-  // CHECK LOGIN STATUS
-  if (typeof req.session.loginInfo === 'undefined') {
-    return res.status(403).json({
-      error: 'NOT LOGGED IN',
-      code: 1
-    });
-  }
-
-  // CHECK CONTENTS VALID
-  if (typeof req.body.contents !== 'string') {
-    return res.status(400).json({
-      error: 'EMPTY CONTENTS',
-      code: 2
->>>>>>> 0d7d6d25c8497f240b079bc4fe81c138ce349afe
     });
   }
 
@@ -109,7 +93,6 @@ router.put('/:id', (req, res) => {
     });
   }
 
-<<<<<<< HEAD
     // CHECK MEMO ID VALIDITY
     if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
         return res.status(400).json({
@@ -125,22 +108,6 @@ router.put('/:id', (req, res) => {
             code: 2
         });
     }
-=======
-  // CHECK CONTENTS VALID
-  if (typeof req.body.contents !== 'string') {
-    return res.status(400).json({
-      error: 'EMPTY CONTENTS',
-      code: 2
-    });
-  }
-
-  if (req.body.contents === '') {
-    return res.status(400).json({
-      error: 'EMPTY CONTENTS',
-      code: 2
-    });
-  }
->>>>>>> 0d7d6d25c8497f240b079bc4fe81c138ce349afe
 
   // CHECK LOGIN STATUS
   if (typeof req.session.loginInfo === 'undefined') {
@@ -161,7 +128,6 @@ router.put('/:id', (req, res) => {
         code: 4
       });
     }
-<<<<<<< HEAD
 */
     // CHECK LOGIN STATUS
     if(typeof req.session.loginInfo === 'undefined') {
@@ -228,21 +194,6 @@ router.put('/:id', (req, res) => {
                 memo
             });
         });
-=======
-
-    // IF EXISTS, CHECK WRITER
-    if (memo.writer != req.session.loginInfo.username) {
-      return res.status(403).json({
-        error: 'PERMISSION FAILURE',
-        code: 5
-      });
-    }
-
-    // MODIFY AND SAVE IN DATABASE
-
-    memo.date.edited = new Date();
-    memo.is_edited = true;
->>>>>>> 0d7d6d25c8497f240b079bc4fe81c138ce349afe
 
     if ('name' in req.body) {
       name = req.body.name;
@@ -337,23 +288,6 @@ router.get('/', (req, res) => {
 });
 
 /*
-<<<<<<< HEAD
-=======
-    READ MEMO: GET /api/memo
-*/
-router.get('/:category', (req, res) => {
-  console.log(req.params.category);
-  Memo.find({ category: req.params.category })
-    .sort({ _id: -1 })
-    .limit(6)
-    .exec((err, memos) => {
-      if (err) throw err;
-      res.json(memos);
-    });
-});
-
-/*
->>>>>>> 0d7d6d25c8497f240b079bc4fe81c138ce349afe
     READ ADDITIONAL (OLD/NEW) MEMO: GET /api/memo/:listType/:id
 */
 router.get('/:listType/:id', (req, res) => {
@@ -464,15 +398,9 @@ router.post('/star/:id', (req, res) => {
 /*
     READ MEMO OF A USER: GET /api/memo/:username
 */
-<<<<<<< HEAD
 router.get('/person/writer/:username', (req, res) => {
     Memo.find({writer: req.params.username})
     .sort({"_id": -1})
-=======
-router.get('/:username', (req, res) => {
-  Memo.find({ writer: req.params.username })
-    .sort({ _id: -1 })
->>>>>>> 0d7d6d25c8497f240b079bc4fe81c138ce349afe
     .limit(6)
     .exec((err, memos) => {
       if (err) throw err;
@@ -529,15 +457,9 @@ router.get('/person/writer/:username/:listType/:id', (req, res) => {
 /*
     READ MEMO OF A USER: GET /api/memo/:username
 */
-<<<<<<< HEAD
 router.get('/person/borrower/:username', (req, res) => {
     Memo.find({borrower: req.params.username})
     .sort({"_id": -1})
-=======
-router.get('/rentaler/:username', (req, res) => {
-  Memo.find({ borrower: req.params.username })
-    .sort({ _id: -1 })
->>>>>>> 0d7d6d25c8497f240b079bc4fe81c138ce349afe
     .limit(6)
     .exec((err, memos) => {
       if (err) throw err;
@@ -548,7 +470,6 @@ router.get('/rentaler/:username', (req, res) => {
 /*
     READ ADDITIONAL (OLD/NEW) MEMO OF A USER: GET /api/memo/:username/:listType/:id
 */
-<<<<<<< HEAD
 router.get('/person/borrower/:username/:listType/:id', (req, res) => {
     let listType = req.params.listType;
     let id = req.params.id;
@@ -601,12 +522,6 @@ router.get('/item/category/:category', (req, res) => {
     Memo.find({category:req.params.category})
     .sort({"_id": -1})
     .limit(6)
-=======
-router.get('/id/:dataid', (req, res) => {
-  Memo.find({ _id: req.params.dataid })
-    .sort({ _id: -1 })
-    .limit(1)
->>>>>>> 0d7d6d25c8497f240b079bc4fe81c138ce349afe
     .exec((err, memos) => {
       if (err) throw err;
       res.json(memos);
@@ -616,7 +531,6 @@ router.get('/id/:dataid', (req, res) => {
 /*
     READ ADDITIONAL (OLD/NEW) MEMO OF A USER: GET /api/memo/:username/:listType/:id
 */
-<<<<<<< HEAD
 router.get('/item/category/:category/:listType/:id', (req, res) => {
     let listType = req.params.listType;
     let id = req.params.id;
@@ -658,48 +572,5 @@ router.get('/item/category/:category/:listType/:id', (req, res) => {
             return res.json(memos);
         });
     }
-=======
-router.get('/:username/:listType/:id', (req, res) => {
-  let listType = req.params.listType;
-  let id = req.params.id;
-
-  // CHECK LIST TYPE VALIDITY
-  if (listType !== 'old' && listType !== 'new') {
-    return res.status(400).json({
-      error: 'INVALID LISTTYPE',
-      code: 1
-    });
-  }
-
-  // CHECK MEMO ID VALIDITY
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({
-      error: 'INVALID ID',
-      code: 2
-    });
-  }
-
-  let objId = new mongoose.Types.ObjectId(req.params.id);
-
-  if (listType === 'new') {
-    // GET NEWER MEMO
-    Memo.find({ writer: req.params.username, _id: { $gt: objId } })
-      .sort({ _id: -1 })
-      .limit(6)
-      .exec((err, memos) => {
-        if (err) throw err;
-        return res.json(memos);
-      });
-  } else {
-    // GET OLDER MEMO
-    Memo.find({ writer: req.params.username, _id: { $lt: objId } })
-      .sort({ _id: -1 })
-      .limit(6)
-      .exec((err, memos) => {
-        if (err) throw err;
-        return res.json(memos);
-      });
-  }
->>>>>>> 0d7d6d25c8497f240b079bc4fe81c138ce349afe
 });
 export default router;
