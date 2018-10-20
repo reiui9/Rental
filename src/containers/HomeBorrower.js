@@ -54,7 +54,7 @@ class HomeBorrower extends React.Component {
         };
 
 
-        this.props.memoListRequestbyBorrow(true, undefined, undefined, this.props.borrower).then(
+        this.props.memoListRequestbyBorrower(true, undefined, undefined, this.props.borrower).then(
             () => {
                 setTimeout(loadUntilScrollable, 1000);
                 loadMemoLoop();
@@ -112,12 +112,12 @@ class HomeBorrower extends React.Component {
 
         // IF PAGE IS EMPTY, DO NOTTHING // THE INITIAL LOADING
         if(this.props.memoData.length === 0 )
-            return this.props.memoListRequestbyBorrow(true, undefined, undefined, this.props.borrower)
+            return this.props.memoListRequestbyBorrower(true, undefined, undefined, this.props.borrower)
             // return this.props.memoListRequestbyBorrow(false);
 
 
 
-        return this.props.memoListRequestbyBorrow(false, 'new', this.props.memoData[0]._id, this.props.borrower);
+        return this.props.memoListRequestbyBorrower(false, 'new', this.props.memoData[0]._id, this.props.borrower);
     }
 
     loadOldMemo() {
@@ -134,7 +134,7 @@ class HomeBorrower extends React.Component {
         let lastId = this.props.memoData[this.props.memoData.length - 1]._id;
 
         // START REQUEST
-        return this.props.memoListRequestbyBorrow(false, 'old', lastId, this.props.borrower).then(() => {
+        return this.props.memoListRequestbyBorrower(false, 'old', lastId, this.props.borrower).then(() => {
             // IF IT IS LAST PAGE, NOTIFY
             if(this.props.isLast) {
                 Materialize.toast('You are reading the last page', 2000);
@@ -169,7 +169,7 @@ class HomeBorrower extends React.Component {
                             setTimeout(()=> {location.reload(false);}, 2000);
                             break;
                         case 2:
-                            $toastContent = $('<span style="color: #FFB4BA">Please write something</span>');
+                            $toastContent = $('<span style="color: #FFB4BA">Please `e something</span>');
                             Materialize.toast($toastContent, 2000);
                             break;
                         default:
@@ -387,3 +387,4 @@ const mapDispatchToProps = (dispatch) => {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeBorrower);
+

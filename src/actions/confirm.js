@@ -2,8 +2,7 @@ import { CONFIRM_POST, CONFIRM_POST_SUCCESS, CONFIRM_POST_FAILURE } from './Acti
 import axios from 'axios';
 
 export function confirmPostRequest({
-  _id,
-  writer
+  _id
 }) {
   return dispatch => {
     dispatch(confirmPost());

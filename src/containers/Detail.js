@@ -46,6 +46,7 @@ class Detail extends React.Component {
         );
 
         const mapToComponents = data => {
+			console.log(data)
             return (
                 <MemoDetail
                     data={data[0]}

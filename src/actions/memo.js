@@ -90,7 +90,7 @@ export function memoListRequestbyCategory(isInitial, listType, id, category) {
         // to be implemented
         dispatch(memoList());
 
-        let url = '/api/memo/item/category/';
+        let url = '/api/memo/item/category';
 
         if(typeof category === "undefined") {
             // category not given, load public memo
@@ -115,7 +115,7 @@ export function memoListRequestbyBorrower(isInitial, listType, id, borrower) {
         // to be implemented
         dispatch(memoList());
 
-        let url = '/api/memo/person/borrower/';
+        let url = '/api/memo/person/borrower';
 
         if(typeof borrower === "undefined") {
             // category not given, load public memo
