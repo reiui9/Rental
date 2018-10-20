@@ -66,89 +66,6 @@ class SellInputs extends Component {
     const { category, deliveryMethod } = this.state;
 
     return (
-<<<<<<< HEAD
-      <div className="sell-inputs-form">
-        <div className="sell-inputs-form-wrapper">
-          <label for="category">category: </label>
-          <div className="sell-inputs-form-container">
-            <form action="#">
-              <p>
-                <label>
-                  <input name="group1" type="radio" checked />
-                  <span>Red</span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input name="group1" type="radio" />
-                  <span>Yellow</span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input class="with-gap" name="group1" type="radio"  />
-                  <span>Green</span>
-                </label>
-              </p>
-              <p>
-                <label>
-                  <input name="group1" type="radio" disabled="disabled" />
-                  <span>Brown</span>
-                </label>
-              </p>
-            </form>
-          </div>
-        </div>
-        <div className="sell-inputs-form-wrapper">
-          <label for="product">Product: </label>
-          <input
-            type="text"
-            className="sell-inputs-product"
-            name="product"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="sell-inputs-form-wrapper">
-          <label for="condition">Condition: </label>
-          <input
-            type="text"
-            className="sell-inputs-condition"
-            name="condition"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="sell-inputs-form-wrapper">
-          <label for="price">Price: </label>
-          <input
-            type="text"
-            className="sell-inputs-price"
-            name="price"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="sell-inputs-form-wrapper">
-          <label for="purchaseDate">Purchase Date: </label>
-          <input
-            type="text"
-            className="sell-inputs-purchaseDate"
-            name="purchaseDate"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="sell-inputs-form-wrapper">
-          <label for="pictures">Pictures: </label>
-          <input
-            type="text"
-            className="sell-inputs-pictures"
-            name="pictures"
-            onChange={this.handleChange}
-          />
-        </div>
-        <div className="sell-inputs-form-submit">
-          <a onClick={this.handlePost} className="waves-effect waves-light btn">
-            SUBMIT
-          </a>
-=======
       <div>
         <div className="sell-inputs-wrapper">
           <label className="category-label" for="category">
@@ -302,7 +219,6 @@ class SellInputs extends Component {
             Submit
             <i class="material-icons right" />
           </button>
->>>>>>> 0d7d6d25c8497f240b079bc4fe81c138ce349afe
         </div>
         <div className="empty" />
       </div>
